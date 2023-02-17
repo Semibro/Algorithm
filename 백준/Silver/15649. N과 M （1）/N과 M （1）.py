@@ -1,16 +1,14 @@
-n, m  = map(int, input().split())
-answer = []
-
-def backtracking(depth):
-    if depth == m:
-        print(' '.join(map(str, answer)))
+def backtracking(a):
+    if len(a) == M:
+        print(' '.join(map(str, a)))
         return
-    
-    for i in range(1, n + 1):
-        if i in answer:
-            continue
-        answer.append(i)
-        backtracking(depth + 1)
-        answer.pop()
+    else:
+        for i in range(1, N+1):
+            if i not in a:
+                a.append(i)
+                backtracking(a)
+                a.pop()
 
-backtracking(0)
+N, M = map(int, input().split())
+lst = []
+backtracking(lst)
