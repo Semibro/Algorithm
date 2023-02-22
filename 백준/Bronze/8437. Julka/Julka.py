@@ -1,0 +1,5 @@
+A = int(input())
+B = int(input())
+A_, B_ = ((A-B)//2)+B, ((A-B)//2)
+print(A_)
+print(B_)
