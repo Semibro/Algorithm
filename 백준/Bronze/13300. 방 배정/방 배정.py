@@ -31,9 +31,9 @@ for _ in range(N):
 
 cnt = 0
 for i in lst:
-    if 0 < i <= K:
-        cnt += 1
-    elif i > K:
-        cnt += (i//K + i%K)
+    if i % K == 0:
+        cnt += i // K
+    else:
+        cnt += i // K + 1
 
 print(cnt)
