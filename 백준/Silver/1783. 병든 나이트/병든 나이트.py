@@ -1,9 +1,9 @@
-n, m = map(int, input().split())
-if n == 1:
+N, M = map(int, input().split())
+if N == 1:
     print(1)
-elif n == 2:
-    print(min(4, (m-1)//2+1))
-elif m <= 6:
-    print(min(4, m))
+elif N == 2:
+    print(min(4, (M-1)//2+1))
+elif M <= 6:
+    print(min(4, M))
 else:
-    print(m-2)
+    print(M-2)
