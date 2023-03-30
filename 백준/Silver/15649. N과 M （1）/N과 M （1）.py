@@ -1,14 +1,20 @@
-def backtracking(a):
-    if len(a) == M:
-        print(' '.join(map(str, a)))
+N, M = map(int, input().split())
+visited = [0] * (N+1)
+result = []
+
+def backtracking(cnt, res):
+    if cnt == M:
+        result.append(res[:])
         return
     else:
         for i in range(1, N+1):
-            if i not in a:
-                a.append(i)
-                backtracking(a)
-                a.pop()
+            if not visited[i]:
+                visited[i] = 1
+                res.append(i)
+                backtracking(cnt+1, res)
+                res.pop()
+                visited[i] = 0
 
-N, M = map(int, input().split())
-lst = []
-backtracking(lst)
+backtracking(0, [])
+for i in result:
+    print(*i)
