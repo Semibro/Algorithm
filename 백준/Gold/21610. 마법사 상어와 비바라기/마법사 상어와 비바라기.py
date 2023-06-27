@@ -18,7 +18,9 @@ for _ in range(M):
         # [3] 모든 구름이 사라진다
 
     # [4] 물복사버그
+    visited = [[0]*N for _ in range(N)]
     for tx, ty in cloud:
+        visited[tx][ty] = 1
         for ax, ay in ((1, 1), (-1, -1), (1, -1), (-1, 1)):
             sx, sy = tx+ax, ty+ay
             if 0<=sx<N and 0<=sy<N and board[sx][sy] > 0:
@@ -28,7 +30,8 @@ for _ in range(M):
     default = []
     for x in range(N):
         for y in range(N):
-            if board[x][y] >= 2 and (x, y) not in cloud:
+            # if board[x][y] >= 2 and (x, y) not in cloud:
+            if board[x][y] >= 2 and not visited[x][y]:
                 board[x][y] -= 2
                 default.append((x, y))
 
