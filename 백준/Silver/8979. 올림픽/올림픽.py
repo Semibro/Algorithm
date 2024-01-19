@@ -4,6 +4,14 @@ lst = []
 
 for _ in range(N):
     lst.append(list(map(int, input().split())))
-temp_lst = lst[K-1]
-lst.sort(reverse=True)
-print(lst.index(temp_lst)+1)
+
+lst.sort(key = lambda x: x[1:], reverse=True)
+# [[1, 1, 2, 0], [2, 0, 1, 0], [3, 0, 1, 0], [4, 0, 0, 1]]
+for i in range(N):
+    if lst[i][0] == K:
+        idx = i
+
+for i in range(N):
+    if lst[i][1:] == lst[idx][1:]:
+        print(i+1)
+        break
