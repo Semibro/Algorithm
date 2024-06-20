@@ -1,6 +1,6 @@
 N = int(input())
 tanghuru = list(map(int, input().split()))
-start, answer, length, fruits = 0, 0, 0, dict()
+start, answer, fruits = 0, 0, dict()
 
 for i in range(N):
     # 탕후루 하나씩 확인
