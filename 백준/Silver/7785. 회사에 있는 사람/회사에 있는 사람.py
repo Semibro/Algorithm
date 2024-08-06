@@ -8,9 +8,8 @@ for _ in range(n):
     if log == 'leave':
         del answer[people]
     
-temp = sorted(answer.items(), reverse=True)
-ans = dict(temp)
+temp = sorted(answer.keys(), reverse=True)
 
 
-for item in ans.keys():
+for item in temp:
     print(item)
