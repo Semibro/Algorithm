@@ -23,6 +23,7 @@ public class Main {
         int maxCount = 0;
         
         // 윈도우 초기 설정
+        // 초밥별 개수를 Map으로 만들기
         for (int i = 0; i < k; i++) {
             window.put(sushi[i], window.getOrDefault(sushi[i], 0) + 1);
         }
