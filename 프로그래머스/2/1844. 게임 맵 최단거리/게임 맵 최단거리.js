@@ -1,3 +1,44 @@
+class Queue {
+    constructor() {
+        this.store = {};
+        this.front = 0;
+        this.rear = 0;
+    }
+    
+    size() {
+        if (this.store[this.rear] === undefined) {
+            return 0;
+        } else {
+            return this.rear - this.front + 1;
+        }
+    }
+    
+    push(data) {
+        if (this.size() === 0) {
+            this.store["0"] = data;
+        } else {
+            this.rear += 1;
+            this.store[this.rear] = data;
+        }
+    }
+    
+    popleft() {
+        let temp;
+        if (this.front === this.rear) {
+            temp = this.store[this.front];
+            delete this.store[this.front];
+            this.front = 0;
+            this.rear = 0;
+            return temp;
+        } else {
+            temp = this.store[this.front];
+            delete this.store[this.front];
+            this.front += 1;
+            return temp;
+        }
+    }
+}
+
 function solution(maps) {
     let answer = -1;
     
@@ -6,18 +47,18 @@ function solution(maps) {
     const col = maps[0].length;
     const visited = Array.from({ length: row }, () => Array(col).fill(0));
     
-    const deque = [];
-    deque.push([0, 0]);
+    const queue = new Queue();
+    queue.push([0, 0]);
     visited[0][0] = 1;
     
-    while (deque.length > 0) {
-        const currentXY = deque.shift();
+    while (queue.size() > 0) {
+        const currentXY = queue.popleft();
         for (let index = 0; index < 4; index++) {
             const nextX = currentXY[0] + direction[index][0];
             const nextY = currentXY[1] + direction[index][1];
             
             if (0 <= nextX && nextX < row && 0 <= nextY && nextY < col && maps[nextX][nextY] === 1 && visited[nextX][nextY] === 0) {
-                deque.push([nextX, nextY]);
+                queue.push([nextX, nextY]);
                 visited[nextX][nextY] = visited[currentXY[0]][currentXY[1]] + 1;
             }
         }
