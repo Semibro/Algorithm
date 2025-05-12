@@ -1,10 +1,10 @@
 # [level 3] 아이템 줍기 - 87694 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/87694) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/87694?language=javascript) 
 
 ### 성능 요약
 
-메모리: 9.34 MB, 시간: 1.17 ms
+메모리: 33.7 MB, 시간: 2.06 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2025년 03월 21일 16:26:04
+2025년 05월 12일 19:03:14
 
 ### 문제 설명
 
