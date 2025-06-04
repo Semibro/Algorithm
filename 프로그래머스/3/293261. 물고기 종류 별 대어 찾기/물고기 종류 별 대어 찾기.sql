@@ -1,0 +1,18 @@
+-- 코드를 작성해주세요
+SELECT
+    A.ID,
+    (
+        SELECT B.FISH_NAME
+        FROM FISH_NAME_INFO B
+        WHERE A.FISH_TYPE = B.FISH_TYPE
+    ) AS FISH_NAME,
+    A.LENGTH
+FROM FISH_INFO A
+WHERE A.FISH_TYPE IN 
+    (
+        SELECT C.FISH_TYPE
+        FROM FISH_INFO C
+        GROUP BY C.FISH_TYPE
+        HAVING A.LENGTH = MAX(C.LENGTH)
+    )
+ORDER BY A.ID
