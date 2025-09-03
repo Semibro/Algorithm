@@ -1,25 +1,16 @@
 def solution(lottos, win_nums):
+    rank = [6, 6, 5, 4, 3, 2, 1]
+    
+    win_set = set(win_nums)  # O(1)로 접근하기 위해 set으로 변경
+    
     zero_count = lottos.count(0)
-    win_nums_match_count = 0
+    match_count = 0
     
     for lotto in lottos:
-        if lotto != 0 and lotto in win_nums:
-            win_nums_match_count += 1
+        if lotto in win_set:
+            match_count += 1
             
-    def check_lotto(num):
-        if num == 6:
-            return 1
-        elif num == 5:
-            return 2
-        elif num == 4:
-            return 3
-        elif num == 3:
-            return 4
-        elif num == 2:
-            return 5
-        else:
-            return 6
-        
-    answer = [check_lotto(zero_count + win_nums_match_count), check_lotto(win_nums_match_count)]
+    max_rank = rank[match_count + zero_count]
+    min_rank = rank[match_count]
     
-    return answer
+    return [max_rank, min_rank]
