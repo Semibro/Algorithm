@@ -1,20 +1,23 @@
 from collections import defaultdict
 
 def solution(id_list, report, k):
-    report_count = defaultdict(int)
-    report_dict = defaultdict(set)
     answer = [0] * len(id_list)
+    user_to_idx = { user_id: i for i, user_id in enumerate(id_list) }
     
-    for r in report:
-        a, b = r.split(" ")
-        if b not in report_dict[a]:
-            report_count[b] += 1
-            report_dict[a].add(b)
+    reported_counts = defaultdict(int)
+    reporter_map = defaultdict(set)
+    
+    for r in set(report):
+        reporter, reported = r.split()
+        reported_counts[reported] += 1
+        reporter_map[reporter].add(reported)
         
-    for key in report_count.keys():
-        if report_count[key] >= k:
-            for i in report_dict.keys():
-                if key in report_dict[i]:
-                    answer[id_list.index(i)] += 1
-                    
+    for reporter, reported_set in reporter_map.items():
+        mail_count = 0
+        for reported_user in reported_set:
+            if reported_counts[reported_user] >= k:
+                mail_count += 1
+        
+        answer[user_to_idx[reporter]] = mail_count
+            
     return answer
