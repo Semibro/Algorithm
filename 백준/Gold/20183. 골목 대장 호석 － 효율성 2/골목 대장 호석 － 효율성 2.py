@@ -27,16 +27,13 @@ def check(max_allowed_shame):
         if current_total_cost > dist[current_node]:
             continue
 
-        if current_total_cost > C:
-            continue
-
         for next_node, cost in graph[current_node]:
             if cost > max_allowed_shame:
                 continue
 
             new_total_cost = current_total_cost + cost
 
-            if new_total_cost < dist[next_node] and new_total_cost <= C:
+            if new_total_cost < dist[next_node]:
                 dist[next_node] = new_total_cost
                 heapq.heappush(heap, (new_total_cost, next_node))
 
@@ -46,7 +43,7 @@ low = 0
 high = max_edge_cost
 answer = INF
 
-while low < high:
+while low <= high:
     mid = (low + high) // 2
 
     if check(mid):
